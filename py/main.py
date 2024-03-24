@@ -1,28 +1,22 @@
 import flet as ft
-
+import os
 def main(page: ft.Page):
-    page.title = "ChouaibCher7"
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
-
-    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
-
-    def minus_click(e):
-        txt_number.value = str(int(txt_number.value) - 1)
-        page.update()
-
-    def plus_click(e):
-        txt_number.value = str(int(txt_number.value) + 1)
-        page.update()
-
     page.add(
-        ft.Row(
-            [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
-                txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-        )
+        ft.Text(value=f"os.path"),
+        ft.TextField(label="With prefix", prefix_text="https://"),
+        ft.TextField(label="With suffix", suffix_text=".com"),
+        ft.TextField(
+            label="With prefix and suffix", prefix_text="https://", suffix_text=".com"
+        ),
+        ft.TextField(
+            label="My favorite color",
+            icon=ft.icons.FORMAT_SIZE,
+            hint_text="Type your favorite color",
+            helper_text="You can type only one color",
+            counter_text="0 symbols typed",
+            prefix_icon=ft.icons.COLOR_LENS,
+            suffix_text="...is your color",
+        ),
     )
 
 ft.app(target=main)
